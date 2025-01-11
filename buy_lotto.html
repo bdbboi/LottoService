@@ -1,0 +1,48 @@
+<!-- lotto/templates/lotto/buy_lotto.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>로또 구매</title>
+</head>
+<body>
+    <h1>로또 구매</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label>
+            <input type="radio" name="purchase_type" value="manual" id="manual" checked> 수동
+        </label>
+        <label>
+            <input type="radio" name="purchase_type" value="automatic" id="automatic"> 자동
+        </label>
+
+        <div id="manual-input">
+            <p>1~45 사이의 숫자 6개를 입력하세요:</p>
+            <input type="number" name="numbers[]" min="1" max="45" required>
+            <input type="number" name="numbers[]" min="1" max="45" required>
+            <input type="number" name="numbers[]" min="1" max="45" required>
+            <input type="number" name="numbers[]" min="1" max="45" required>
+            <input type="number" name="numbers[]" min="1" max="45" required>
+            <input type="number" name="numbers[]" min="1" max="45" required>
+        </div>
+
+        <button type="submit">구매</button>
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+<script>
+    const manualInput = document.getElementById('manual-input');
+    const manualRadio = document.getElementById('manual');
+    const automaticRadio = document.getElementById('automatic');
+
+    // 자동 구매 선택 시 번호 입력창 숨기기
+    manualRadio.addEventListener('change', () => {
+        manualInput.style.display = 'block';
+    });
+    automaticRadio.addEventListener('change', () => {
+        manualInput.style.display = 'none';
+    });
+</script>
+</html>

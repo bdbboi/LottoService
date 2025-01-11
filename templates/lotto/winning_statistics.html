@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>당첨자 통계</title>
+</head>
+<body>
+    <h1>당첨자 통계</h1>
+    {% for stat in statistics %}
+        <h2>당첨 번호: {{ stat.winning_numbers }}</h2>
+        <p>당첨자 수: {{ stat.count }}</p>
+        <ul>
+            {% for ticket in stat.tickets %}
+                <li>{{ ticket.user_name }} - {{ ticket.purchase_date }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>

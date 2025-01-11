@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>구매 확인</title>
+</head>
+<body>
+    <h1>로또 구매 확인</h1>
+    <p>구매 타입: {{ ticket.purchase_type }}</p>
+    <p>선택 번호: {{ ticket.numbers }}</p>
+    <p>구매 시간: {{ ticket.created_at }}</p>
+    <a href="{% url 'lotto:buy_lotto' %}">다시 구매</a>
+</body>
+</html>
